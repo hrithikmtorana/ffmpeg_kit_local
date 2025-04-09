@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     ss.source_files        = 'Classes/**/*'
     ss.public_header_files = 'Classes/**/*.h'
     # Unzip the local file during pod installation.
-    ss.prepare_command = 'unzip -o "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl.zip" -d "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl"'
+    ss.prepare_command = 'unzip -o "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl_2.zip" -d "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl_2"'
     # Reference the vendored framework from the unzipped folder.
     ss.vendored_frameworks = "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl/ffmpegkit.framework"
     ss.ios.deployment_target = '12.1'
