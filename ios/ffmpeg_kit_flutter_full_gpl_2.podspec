@@ -6,33 +6,28 @@ Pod::Spec.new do |s|
     A Flutter plugin for running FFmpeg and FFprobe commands.
     This build includes the complete GPL-licensed FFmpeg functionality.
   DESC
-  s.homepage         = 'https://github.com/hrithikmtorana/ffmpeg-kit-local'
+  s.homepage         = 'https://github.com/hrithikmtorana/ffmpeg_kit_local'
   s.license          = { :type => 'GPL-3.0', :file => '../LICENSE' }
-  s.author           = { 'ARTHENICA' => 'open-source@arthenica.com' }
+  s.author           = { 'Hrithik Torana' => 'you@example.com' }
 
-  s.source           = { :git => 'https://github.com/hrithikmtorana/ffmpeg-kit-local', :tag => s.version.to_s } # ✅ REQUIRED for validation
-
-  s.platform            = :ios
+  s.platform            = :ios, '12.1'
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.prepare_command     = 'unzip -o "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl_2.zip" -d "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl_2"'
+  # ✅ Use GitHub release ZIP directly
+  s.source = {
+    :http => 'https://github.com/hrithikmtorana/ffmpeg_kit_local/releases/download/v6.0.3/ffmpeg-kit-ios-full-gpl_2.zip'
+  }
+
+  # ✅ CocoaPods auto-unzips; point directly to the unzipped framework
+  s.vendored_frameworks = 'ffmpegkit.framework'
 
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
-
-  s.default_subspec = 'full-gpl'
 
   s.dependency 'Flutter'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386'
   }
-
-  s.subspec 'full-gpl' do |ss|
-    ss.source_files        = 'Classes/**/*'
-    ss.public_header_files = 'Classes/**/*.h'
-    ss.vendored_frameworks = "${POD_FILE_DIR}/vendor/ffmpeg-kit-ios-full-gpl_2/ffmpegkit.framework"
-    ss.ios.deployment_target = '12.1'
-  end
 end
