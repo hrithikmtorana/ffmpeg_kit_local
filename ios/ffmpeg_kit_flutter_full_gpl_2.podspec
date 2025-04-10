@@ -121,7 +121,7 @@ Pod::Spec.new do |s|
   s.subspec 'full-gpl' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    ss.dependency 'ffmpeg-kit-ios-full-gpl', "6.0"
+    ss.dependency 'ffmpeg-kit-ios-full-gpl_2', "6.0.3"
     ss.ios.deployment_target = '12.1'
   end
 
